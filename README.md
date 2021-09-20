@@ -1,2 +1,38 @@
 # event-throttling-VS-debounce
 event throttling VS debounce
+
+
+## event-throttling example : 
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Display a Search Field</h1>
+
+<form action="/action_page.php">
+  <label for="gsearch">Search Google:</label>
+  <input type="search" id="gsearch" name="gsearch"  onkeyup="betterFunction()">
+</form>
+
+</body>
+<script>
+var input = document.getElementById("gsearch");
+
+function sendCode(){
+var input = document.getElementById("gsearch");
+ console.log("output ===>", input.value)
+}
+const doSomeMagic = (func, delay) => {
+	let timer
+    return function(){
+    	let context = this
+        args = arguments
+        clearTimeout(timer)
+        timer =  setTimeout(()=>{ sendCode.apply(context, arguments)}, delay);
+    }
+}
+const betterFunction = doSomeMagic(sendCode, 300)
+
+</script>
+</html>
