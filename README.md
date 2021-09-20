@@ -2,37 +2,6 @@
 event throttling VS debounce
 
 
-## event-throttling example : 
+##Throttling will delay executing a function. It will reduce the notifications of an event that fires multiple times.
 
-<!DOCTYPE html>
-<html>
-<body>
-
-<h1>Display a Search Field</h1>
-
-<form action="/action_page.php">
-  <label for="gsearch">Search Google:</label>
-  <input type="search" id="gsearch" name="gsearch"  onkeyup="betterFunction()">
-</form>
-
-</body>
-<script>
-var input = document.getElementById("gsearch");
-
-function sendCode(){
-var input = document.getElementById("gsearch");
- console.log("output ===>", input.value)
-}
-const doSomeMagic = (func, delay) => {
-	let timer
-    return function(){
-    	let context = this
-        args = arguments
-        clearTimeout(timer)
-        timer =  setTimeout(()=>{ sendCode.apply(context, arguments)}, delay);
-    }
-}
-const betterFunction = doSomeMagic(sendCode, 300)
-
-</script>
-</html>
+##Debouncing will bunch a series of sequential calls to a function into a single call to that function. It ensures that one notification is made for an event that fires multiple times.
